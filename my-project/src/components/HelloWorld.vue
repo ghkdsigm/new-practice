@@ -1,27 +1,34 @@
 <script>
-import { reactive, ref } from 'vue'
+import { reactive, ref, onMounted } from 'vue'
 
 export default {
   setup() {
     let ss = ref(0)   
-    const zz = reactive(null)
+    const zz = ref(null)
+    const el = ref()
+
     let count = function(){
       this.ss++
       
       if(this.ss == 20){
         alert('20됏음')
       }
-
       if(this.ss%2 == 1){
         this.zz.style.color = 'red';
       } else {
         this.zz.style.color = '#fff';
-      }
+      }      
     }
+
+    onMounted(()=>{
+      el.value.style.color = 'blue';
+    })
+    
     return {
       count,
       ss,
-      zz      
+      zz,
+      el
     }
   },
 }
@@ -35,6 +42,9 @@ export default {
     </p>
     <p ref="zz">
       shoot
+    </p>
+    <p ref="el">
+      shoots
     </p>
   </div>
 </template>
