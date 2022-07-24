@@ -1,5 +1,5 @@
 <script>
-import { reactive, ref, onMounted } from 'vue'
+import { reactive, ref, onMounted, onBeforeUnmount } from 'vue'
 
 export default {
   setup() {
@@ -7,6 +7,8 @@ export default {
     const zz = ref(null)
     const el = ref()
     const kkk = ref()
+    const arr = ref(['aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa'])
+    let scrollTopButton = ref()
 
     let count = function(){
       this.ss++
@@ -25,6 +27,11 @@ export default {
       }      
     }
 
+    let scrollTopbt = function(){
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } 
+ 
+
     // const kk = function(){
     //   this.kkk.value.classList.add('text-6xl');
     // }
@@ -33,14 +40,37 @@ export default {
       el.value.style.color = 'blue';
       kkk.value.classList.add('text-5xl');
       console.log('aaaa')
+
+      window.addEventListener("scroll",function(){
+        if (window.scrollY > 0) {
+            console.log(1)
+            scrollTopButton.value.classList.remove("invisible");
+        } else {
+            scrollTopButton.value.classList.add("invisible");
+        }
+      });
+      
     })
-    
+
+    onBeforeUnmount(()=>{
+      window.removeEventListener("scroll",function(){
+        if (window.scrollY > 0) {
+            console.log(1)
+            scrollTopButton.value.classList.remove("invisible");
+        } else {
+            scrollTopButton.value.classList.add("invisible");
+        }
+      });
+    })
     return {
       count,
       ss,
       zz,
       el,
       kkk,
+      arr,
+      scrollTopButton,
+      scrollTopbt
     }
   },
 }
@@ -62,6 +92,24 @@ export default {
       <!-- text-2xl -->
       adsfasdf
     </p>
+    <ul>
+      <li v-for="(item,index) in arr" :key="index">
+        {{item}}
+      </li>
+    </ul>
+     <div
+        ref="scrollTopButton"
+        @click="scrollTopbt"
+        class="invisible sticky w-full flex justify-end bottom-0 pb-3 pr-5 transition duration-150 ease-out"
+    >
+        <div
+            class="text-gray-400 hover:text-blue-400 transition"
+        >
+            <button>
+                Scroll to top
+            </button>
+        </div>
+    </div>
   </div>
 </template>
 
