@@ -14,7 +14,10 @@ export default {
       if(this.ss == 5){
         alert('5됏음')
         this.kkk.classList.remove('text-5xl');
+      } else if(this.ss >= 10){
+        this.kkk.classList.add('text-5xl');
       }
+
       if(this.ss%2 == 1){
         this.zz.style.color = 'red';        
       } else {
