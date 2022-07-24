@@ -100,12 +100,12 @@ export default {
      <div
         ref="scrollTopButton"
         @click="scrollTopbt"
-        class="invisible sticky w-full flex justify-end bottom-0 pb-3 pr-5 transition duration-150 ease-out"
+        class="invisible fixed bottom-0 right-0 flex justify-end pb-3 pr-5 transition duration-150 ease-out"
     >
         <div
             class="text-gray-400 hover:text-blue-400 transition"
         >
-            <button>
+            <button type="button">
                 Scroll to top
             </button>
         </div>
