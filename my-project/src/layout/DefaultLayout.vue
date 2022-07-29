@@ -10,7 +10,7 @@
       </router-link>          
     </div>
     <!--메인섹션-->
-    <div class="flex w-full justify-center">
+    <div class="flex w-full justify-center text-center">
       <router-view></router-view>
     </div>
   </div>

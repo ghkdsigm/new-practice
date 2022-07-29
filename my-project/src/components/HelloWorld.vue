@@ -1,5 +1,6 @@
 <script>
 import { reactive, ref, onMounted, onBeforeUnmount } from 'vue'
+import router from '../router'
 
 export default {
   setup() {
@@ -9,6 +10,8 @@ export default {
     const kkk = ref()
     const arr = ref(['aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa','aaa'])
     let scrollTopButton = ref()
+
+    const webpage = router.currentRoute.value;
 
     let count = function(){
       this.ss++
@@ -39,28 +42,34 @@ export default {
     onMounted(()=>{
       el.value.style.color = 'blue';
       kkk.value.classList.add('text-5xl');
-      console.log('aaaa')
+      //console.log(router.currentRoute.value.name)
+      //let browser = router.currentRoute.value.name[helloworld]
+      //console.log('aaaa')
 
-      window.addEventListener("scroll",function(){
-        if (window.scrollY > 0) {
-            //console.log(1)
-            scrollTopButton.value.classList.remove("invisible");
-        } else {
-            scrollTopButton.value.classList.add("invisible");
-        }
-      });
+      if(webpage.name = 'helloworld'){
+        window.addEventListener("scroll",function(){
+          if (window.scrollY > 0) {
+              //console.log(1)
+              scrollTopButton.value.classList.remove("invisible");
+          } else {
+              scrollTopButton.value.classList.add("invisible");
+          }
+        });
+      }
       
     })
 
     onBeforeUnmount(()=>{
-      window.removeEventListener("scroll",function(){
-        if (window.scrollY > 0) {
-            console.log(1)
-            //scrollTopButton.value.classList.remove("invisible");
-        } else {
-            //scrollTopButton.value.classList.add("invisible");
-        }
-      });
+      if(webpage.name = 'helloworld'){
+        window.removeEventListener("scroll",function(){
+          if (window.scrollY > 0) {
+              console.log(1)
+              scrollTopButton.value.classList.remove("invisible");
+          } else {
+              scrollTopButton.value.classList.add("invisible");
+          }
+        });
+      }      
     })
     return {
       count,
