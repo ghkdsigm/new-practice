@@ -1,16 +1,16 @@
 <template>
   <div>
     <!--사이드메뉴-->
-    <div class="flex flex-col items-start space-y-3 lg:mt-4 lg:mb-4">
+    <div class="relative top-0 flex text-center justify-center py-10">
       <router-link :to="route.path" :class="`transition-all ease-in-out hover:text-primary hover:bg-blue-50 dark:hover:bg-gray-800 px-4 py-2 rounded-full  cursor-pointer dark:text-gray-300 ${router.currentRoute.value.name == route.name ? 'text-primary dark:text-primary'  : ''}`" v-for="route in routes" :key="route">
-        <div v-if="route.meta.isMenu">
+        <div v-if="route.meta.isMenu" class="flex">
             <i :class="route.icon"></i>
-            <span class="ml-5 text-xl font-light lg:inline-block">{{route.title}}</span>
+            <span class="text-base font-light lg:inline-block">{{route.title}}</span>
         </div>
       </router-link>          
     </div>
     <!--메인섹션-->
-    <div class="flex-1 flex h-screen">
+    <div class="flex w-full justify-center">
       <router-view></router-view>
     </div>
   </div>

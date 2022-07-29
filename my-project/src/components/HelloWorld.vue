@@ -43,7 +43,7 @@ export default {
 
       window.addEventListener("scroll",function(){
         if (window.scrollY > 0) {
-            console.log(1)
+            //console.log(1)
             scrollTopButton.value.classList.remove("invisible");
         } else {
             scrollTopButton.value.classList.add("invisible");
@@ -56,9 +56,9 @@ export default {
       window.removeEventListener("scroll",function(){
         if (window.scrollY > 0) {
             console.log(1)
-            scrollTopButton.value.classList.remove("invisible");
+            //scrollTopButton.value.classList.remove("invisible");
         } else {
-            scrollTopButton.value.classList.add("invisible");
+            //scrollTopButton.value.classList.add("invisible");
         }
       });
     })
